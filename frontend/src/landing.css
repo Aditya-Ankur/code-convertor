@@ -1,0 +1,306 @@
+.bg-container {
+    background-image: url('/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.landing-container {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  color: white;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+.grid-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #050508; /* Darker background color */
+  background-image: 
+    /* Main grid lines */
+    linear-gradient(rgba(72, 28, 115, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(72, 28, 115, 0.08) 1px, transparent 1px),
+    
+    /* Random purple accents */
+    radial-gradient(circle at 20% 30%, rgba(111, 51, 190, 0.12) 0%, transparent 20%),
+    radial-gradient(circle at 80% 20%, rgba(138, 43, 226, 0.08) 0%, transparent 25%),
+    radial-gradient(circle at 40% 80%, rgba(93, 63, 211, 0.12) 0%, transparent 30%),
+    radial-gradient(circle at 70% 60%, rgba(170, 66, 245, 0.06) 0%, transparent 20%);
+  
+  background-size: 
+    40px 40px,
+    40px 40px,
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%;
+  
+  z-index: -1;
+}
+
+/* Small purple glow for depth */
+.grid-background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(111, 51, 190, 0.08) 0%, transparent 70%);
+  z-index: -1;
+}
+
+.hero-section {
+  display: flex;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 4rem 0;
+}
+
+.hero-content {
+  flex: 1;
+  padding-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 50%;
+}
+
+.animation-placeholder {
+  flex: 1;
+  min-height: 500px;
+  /* Reserved for future 3D animation */
+}
+
+.hero-title {
+  font-size: 4.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, #ffffff, #c8a2ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(200, 162, 255, 0.3);
+  line-height: 1.1;
+}
+
+.hero-subtitle {
+  font-size: 1.6rem;
+  line-height: 1.5;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  color: #e0e0e0;
+  font-weight: 400;
+}
+
+.cta-button {
+  background: linear-gradient(90deg, #8a2be2, #4b0082);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  padding: 14px 36px;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: fit-content;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Primary glow effect */
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #ff00cc, #8a2be2, #4b0082, #00bfff, #8a2be2);
+  background-size: 400% 400%;
+  z-index: -1;
+  filter: blur(15px);
+  opacity: 0.8;
+  animation: noiseWave1 15s ease-in-out infinite, colorShift 5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Secondary glow effect for more wave dynamics */
+.cta-button::after {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  right: -12px;
+  bottom: -12px;
+  border-radius: 50px;
+  background: linear-gradient(90deg, #8a2be2, #ff00cc, #00bfff, #4b0082, #ff00cc);
+  background-size: 400% 400%;
+  z-index: -2;
+  filter: blur(25px);
+  opacity: 0.6;
+  animation: noiseWave2 17s ease-in-out infinite, colorShift 7s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.cta-button:hover::before {
+  top: -15px;
+  left: -15px;
+  right: -15px;
+  bottom: -15px;
+  opacity: 0.9;
+  filter: blur(20px);
+}
+
+.cta-button:hover::after {
+  top: -20px;
+  left: -20px;
+  right: -20px;
+  bottom: -20px;
+  opacity: 0.7;
+  filter: blur(30px);
+}
+
+.cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(138, 43, 226, 0.7);
+}
+
+/* Color shift animation */
+@keyframes colorShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Wave motion animation */
+@keyframes waveGlow {
+  0% {
+    transform: scale(0.95) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.05) rotate(90deg);
+  }
+  50% {
+    transform: scale(0.95) rotate(180deg);
+  }
+  75% {
+    transform: scale(1.05) rotate(270deg);
+  }
+  100% {
+    transform: scale(0.95) rotate(360deg);
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-section {
+    flex-direction: column;
+  }
+  
+  .hero-content {
+    padding-right: 0;
+    max-width: 100%;
+    margin-bottom: 3rem;
+  }
+  
+  .hero-title {
+    font-size: 3.5rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.4rem;
+  }
+}
+
+/* Add these styles to your existing CSS */
+
+.particles-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.grid-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(170, 66, 245, 0.8);
+  filter: blur(1px);
+  box-shadow: 
+    0 0 6px rgba(170, 66, 245, 0.8),
+    0 0 12px rgba(170, 66, 245, 0.5);
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Particle trail effect */
+.grid-particle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(170, 66, 245, 0.6);
+  transform: translate(-50%, -50%);
+  opacity: 0.7;
+  filter: blur(2px);
+  z-index: -1;
+}
+
+.grid-particle-trail {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(170, 66, 245, 0.3);
+  filter: blur(1px);
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0;
+  animation: fadeTrail 1.5s ease-out forwards;
+}
+
+@keyframes fadeTrail {
+  0% { opacity: 0.5; }
+  100% { opacity: 0; }
+}
+
+/* Modify pulse animation for less dramatic effect */
+.grid-particle:nth-child(3n) {
+  animation: pulsate 3s infinite alternate;
+}
+
+.grid-particle:nth-child(3n+1) {
+  animation: pulsate 4s infinite alternate-reverse;
+}
+
+@keyframes pulsate {
+  0% {
+    opacity: 0.7;
+    filter: blur(1px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(2px);
+  }
+}

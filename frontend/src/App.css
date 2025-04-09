@@ -1,0 +1,489 @@
+.app-container {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-wrapper {
+  flex: 1;
+  z-index: 1;
+  position: relative;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.app-content-page {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.app-content {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.code-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.code-editor, .code-output {
+  flex: 1;
+  background-color: rgba(30, 30, 40, 0.8);
+  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid rgba(170, 66, 245, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.code-editor h3, .code-output h3, .explanation-container h3 {
+  color: #aa42f5;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.language-tag {
+  font-size: 0.8rem;
+  background-color: rgba(170, 66, 245, 0.2);
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  color: white;
+}
+
+.code-input {
+  width: 100%;
+  height: 300px;
+  background-color: rgba(25, 25, 35, 0.8);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.75rem;
+  font-family: 'Fira Code', monospace;
+  resize: none;
+}
+
+.code-display {
+  width: 100%;
+  height: 300px;
+  background-color: rgba(25, 25, 35, 0.8);
+  color: white;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.explanation-container {
+  background-color: rgba(30, 30, 40, 0.8);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(170, 66, 245, 0.3);
+}
+
+.explanation-content {
+  background-color: rgba(25, 25, 35, 0.8);
+  color: white;
+  border-radius: 4px;
+  padding: 1rem;
+  white-space: pre-line;
+  line-height: 1.5;
+  font-size: 0.875rem; /* Smaller font size */
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+/* Markdown specific styling */
+.explanation-content h1,
+.explanation-content h2,
+.explanation-content h3 {
+  color: #aa42f5;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.explanation-content h2 {
+  font-size: 1rem;
+}
+
+.explanation-content h3 {
+  font-size: 0.9rem;
+}
+
+.explanation-content p {
+  margin-bottom: 0.75rem;
+}
+
+.explanation-content code {
+  background-color: rgba(40, 40, 60, 0.6);
+  padding: 0.1rem 0.3rem;
+  border-radius: 3px;
+  font-family: 'Fira Code', monospace !important;
+  font-size: 0.8rem;
+}
+
+.explanation-content pre {
+  background-color: rgba(20, 20, 30, 0.8);
+  padding: 0.75rem;
+  border-radius: 4px;
+  overflow-x: auto;
+  margin: 0.75rem 0;
+  border-left: 2px solid #aa42f5;
+}
+
+.explanation-content ul,
+.explanation-content ol {
+  margin-left: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.explanation-content a {
+  color: #d174ff;
+  text-decoration: none;
+}
+
+.explanation-content a:hover {
+  text-decoration: underline;
+}
+
+.explanation-content blockquote {
+  border-left: 3px solid #aa42f5;
+  padding-left: 1rem;
+  margin-left: 0;
+  color: #b0b0b0;
+}
+
+.explanation-content hr {
+  border: none;
+  border-top: 1px solid rgba(170, 66, 245, 0.3);
+  margin: 1rem 0;
+}
+
+.code-editor h3, .code-output h3 {
+  margin-top: 0;
+  color: #e0e0e0;
+  border-bottom: 1px solid rgba(170, 66, 245, 0.3);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.code-editor textarea {
+  width: 100%;
+  height: 300px;
+  background: rgba(15, 15, 25, 0.6);
+  border: 1px solid rgba(170, 66, 245, 0.3);
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-family: monospace;
+  padding: 1rem;
+  font-size: 1rem;
+  resize: none;
+}
+
+.code-output pre {
+  width: 100%;
+  height: 300px;
+  background: rgba(15, 15, 25, 0.6);
+  border: 1px solid rgba(170, 66, 245, 0.3);
+  border-radius: 4px;
+  color: #e0e0e0;
+  font-family: 'Fira Code', monospace;
+  padding: 1rem;
+  font-size: 1rem;
+  overflow: auto;
+  margin: 0;
+}
+
+.language-selector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.language-selector label {
+  color: #aa42f5;
+  font-weight: 600;
+}
+
+.language-dropdown {
+  background-color: rgba(40, 40, 50, 0.8);
+  color: white;
+  border: 1px solid #aa42f5;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  outline: none;
+  transition: all 0.3s;
+  min-width: 240px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-shadow: 0 0 15px rgba(170, 66, 245, 0.15);
+  position: relative;
+  backdrop-filter: blur(5px);
+}
+
+.language-dropdown:focus {
+  border-color: #d174ff;
+  box-shadow: 0 0 8px rgba(170, 66, 245, 0.5);
+}
+
+/* Custom dropdown arrow */
+.language-selector::after {
+  content: '▼';
+  font-size: 0.7rem;
+  color: rgba(170, 66, 245, 0.8);
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.language-dropdown:hover {
+  border-color: rgba(170, 66, 245, 0.8);
+  box-shadow: 0 0 20px rgba(170, 66, 245, 0.3);
+}
+
+/* Style for dropdown options */
+.language-dropdown option {
+  background-color: #0f0f1a;
+  color: #e0e0e0;
+  padding: 12px;
+  border-bottom: 1px solid rgba(170, 66, 245, 0.2);
+}
+
+/* Firefox specific styling */
+@-moz-document url-prefix() {
+  .language-dropdown {
+    padding-right: 2.5rem;
+  }
+  
+  select.language-dropdown {
+    background-color: #0f0f1a;
+    color: white;
+    border-color: rgba(170, 66, 245, 0.4);
+  }
+  
+  select.language-dropdown option {
+    background-color: #0f0f1a;
+  }
+}
+
+/* For modern browsers that support these features */
+@supports ((-webkit-appearance: none) or (-moz-appearance: none)) {
+  select.language-dropdown option:hover,
+  select.language-dropdown option:focus,
+  select.language-dropdown option:active,
+  select.language-dropdown option:checked {
+    background: linear-gradient(90deg, #1a0a2e, #2d1b4e);
+    color: white;
+    box-shadow: 0 0 10px rgba(170, 66, 245, 0.3);
+  }
+}
+
+/* Style for Webkit browsers (Chrome, Safari) */
+select.language-dropdown::-webkit-scrollbar {
+  width: 8px;
+}
+
+select.language-dropdown::-webkit-scrollbar-track {
+  background: #0a0a14;
+}
+
+select.language-dropdown::-webkit-scrollbar-thumb {
+  background: rgba(170, 66, 245, 0.5);
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .code-container {
+    grid-template-columns: 1fr;
+  }
+  
+  .language-selector-container {
+    flex-direction: column;
+  }
+  
+  .arrow {
+    transform: rotate(90deg);
+    margin: 0.5rem 0;
+  }
+}
+
+/* Reduced glow effect for the translate button */
+.translate-button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem; /* Increased spacing above button */
+  margin-bottom: 1.5rem;
+}
+
+/* Override the intense glow for the translate button specifically */
+.translate-button-container .cta-button {
+  box-shadow: 0 2px 10px rgba(138, 43, 226, 0.3); /* Less intense shadow */
+}
+
+/* Reduce the glow effect of the pseudo-elements */
+.translate-button-container .cta-button::before,
+.translate-button-container .cta-button::after {
+  opacity: 0.2; /* Lower opacity */
+  filter: blur(10px); /* Less blur */
+}
+
+/* Tone down the hover effect */
+.translate-button-container .cta-button:hover {
+  transform: translateY(-2px); /* Smaller lift effect */
+  box-shadow: 0 4px 12px rgba(138, 43, 226, 0.4); /* Moderate hover shadow */
+}
+
+.translate-button-container .cta-button:hover::before,
+.translate-button-container .cta-button:hover::after {
+  opacity: 0.5; /* Slightly more intense on hover, but still subtle */
+}
+
+/* Make sure animations are less intense */
+@keyframes glowing {
+  0% {
+    box-shadow: 0 0 5px rgba(138, 43, 226, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(138, 43, 226, 0.4);
+  }
+}
+
+.app-title {
+  color: white;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  background: linear-gradient(90deg, #aa42f5, #6e11c8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+.language-selector-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.arrow {
+  color: #aa42f5;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding-bottom: 1.7rem;
+}
+
+.cta-button {
+  background: linear-gradient(90deg, #aa42f5, #6e11c8);
+  color: white;
+  border: none;
+  padding: 0.75rem 2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  min-width: 150px;
+}
+
+.cta-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(170, 66, 245, 0.4);
+}
+
+.cta-button:disabled {
+  background: #666;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.cta-button.loading {
+  background: linear-gradient(90deg, #8131c1, #5a0ea3);
+  opacity: 0.8;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+
+pre, code, .code-input, .code-display * {
+  font-family: 'Fira Code', 'JetBrains Mono', 'Source Code Pro', Consolas, monospace !important;
+}
+
+/* Add to your App.css */
+
+/* For the copy button and header layout */
+.code-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.copy-button {
+  background: none;
+  border: none;
+  color: #aa42f5;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.copy-button:hover {
+  background-color: rgba(170, 66, 245, 0.2);
+}
+
+.copy-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Add a smaller purple hollow ring cursor */
+html, body, .app-content-page, .app-content, 
+.code-container, .code-input, .language-dropdown,
+button, select, textarea {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Ccircle cx='8' cy='8' r='6' stroke='%23aa42f5' stroke-width='1.5'/%3E%3C/svg%3E") 8 8, auto !important;
+}
+
+/* Make cursor bigger and white on hover */
+button:hover, select:hover, .language-dropdown:hover, a:hover {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='10' stroke='white' stroke-width='2'/%3E%3C/svg%3E") 12 12, pointer !important;
+}
+
+/* Base purple cursor */
+html, body, .app-content-page, .app-content, 
+.code-container, .code-input, .language-dropdown,
+button, select, textarea {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none'%3E%3Ccircle cx='8' cy='8' r='6' stroke='%23aa42f5' stroke-width='1.5'/%3E%3C/svg%3E") 8 8, auto !important;
+}
+
+/* Larger purple cursor on hover */
+button:hover, select:hover, .language-dropdown:hover, a:hover {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none'%3E%3Ccircle cx='12' cy='12' r='10' stroke='%23aa42f5' stroke-width='2'/%3E%3C/svg%3E") 12 12, pointer !important;
+  transition: transform 0.3s ease;
+}
