@@ -8,12 +8,13 @@ const app = express();
 
 const apiKey = process.env.GEMINI_API_KEY;
 const port = process.env.PORT || 3000;
+const corsURL = process.env.CORS_URL
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(cors({
-  origin: "http://localhost:5173",
+  origin: corsURL,
   methods: "GET,POST",
   credentials: true,
 }))
